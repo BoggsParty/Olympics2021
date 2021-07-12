@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends 'pages/header-footer.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row center">
+        <h1>All Sports</h1>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row center display-flex">
+        {% for sport in sport %}
+        <div class="col-sm-3">
+            <a href="/sports/detail/{{sport.slug}}"><img class="img-responsive center" src="/media/{{sport.menu_image}}"></a>
+            <h4>{{sport.sport_name}}</h4>
+            {% if sport.locked %}
+                <a class="menu" href="/user/guesses/all/{{sport.slug}}">Click here to view all user's guesses</a>
+            {% else %}
+                <a class="menu" href="#" onclick="window.open('/user/guess/{{sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to change your guesses</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

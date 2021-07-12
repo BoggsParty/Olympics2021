@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'pages/header-footer.html' %}
+
+
+{% block content %}
+
+<div class="spacer"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="center">
+				<h3>Current Scores</h3>
+				<table id="table1" style="width:75%">
+					<tr id="tr1">
+						<td id="td1"><p><u>Username</u></p></td>
+						<td id="td1"><p><u>Score</u></p></td>
+					</tr>
+					{% for score in score %}
+						<tr id="tr1">
+							<!--<td id="td1"><img class="img-responsive" src="/media/{{score.avatar}}"></td>-->
+							<td id="td1"><p>{{ score.user }}</p></td>
+							<td id="td1"><p>{{ score.score}}</p></td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

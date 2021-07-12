@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'pages/header-footer.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row center">
+        <div class="col-sm-12">
+            <h1>All Your Current Guesses</h1>
+        </div>
+    </div>
+    <div class="row center">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+            <h2>Gold</h2>
+        </div>
+        <div class="col-sm-3">
+            <h2>Silver</h2>
+        </div>
+        <div class="col-sm-3">
+            <h2>Bronze</h2>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    {% for guesses in guesses %}
+    <div class="row center">
+        <div class="col-sm-1">
+            <img class="img-responsive center" src="/media/{{guesses.sport.menu_image}}">
+        </div>
+        <div class="col-sm-2">
+            <h3 class="black">{{guesses.sport}}</h3>
+            {% if guesses.sport.locked %}
+                <a href="/user/guesses/all/{{guesses.sport.slug}}">All Guesses</a>
+            {% else %}
+            <a href="#" onclick="window.open('/user/guess/{{guesses.sport.slug}}', 'newwindow', 'width=400, height=300'); return false;">Change Your Guesses</a>
+            {% endif %}
+        </div>
+        <div class="col-sm-3">
+            <h3 class="gray">{{guesses.gold}}</h3>
+        </div>
+        <div class="col-sm-3">
+            <h3 class="gray">{{guesses.silver}}</h3>
+        </div>
+        <div class="col-sm-3">
+            <h3 class="gray">{{guesses.bronze}}</h3>
+        </div>
+    </div>
+    <br>
+    {% endfor %}
+</div>
+
+{% endblock %}

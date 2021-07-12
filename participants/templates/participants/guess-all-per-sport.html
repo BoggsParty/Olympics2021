@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends 'pages/header-footer.html' %}
+
+{% block content %}
+{% if sport.locked %}
+
+<div class="container-fluid">
+    <div class="row center">
+        <div class="col-sm-12">
+            <h1>All User Guesses for {{sport.sport_name}}</h1>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row center">
+        <div class="col-sm-12">
+            <h3 class="black">Winners:</h3>
+                <h3>Gold winner: {{sport.gold}}</h3>
+                <h3>Silver winner: {{sport.silver}}</h3>
+                <h3>Bronze winner: {{sport.bronze}}</h3>
+        </div>
+    </div>
+    <hr>
+</div>
+<div class="container-fluid">
+    <div class="row center">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+            <h2>Gold</h2>
+        </div>
+        <div class="col-sm-3">
+            <h2>Silver</h2>
+        </div>
+        <div class="col-sm-3">
+            <h2>Bronze</h2>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    {% for guesses in guesses %}
+    <div class="row center">
+        <div class="col-sm-3">
+            <h3 class="black">{{guesses.user}}</h3>
+        </div>
+        <div class="col-sm-3">
+            <h3 class="gray">{{guesses.gold}}</h3>
+        </div>
+        <div class="col-sm-3">
+            <h3 class="gray">{{guesses.silver}}</h3>
+        </div>
+        <div class="col-sm-3">
+            <h3 class="gray">{{guesses.bronze}}</h3>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% else %}
+    <h1>You shouldn't be here</h1>
+{% endif %}
+{% endblock %}

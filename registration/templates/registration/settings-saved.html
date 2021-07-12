@@ -1,0 +1,56 @@
+{% extends 'pages/header-footer.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row center">
+        <div class="col-sm-12">
+            <h1>User Settings</h1>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row center">
+        <div class="col-sm-12">
+            <h2>Your settings have been saved!<h2>
+        </div>
+    </div>
+</div>
+</div>
+<div class="container-fluid">
+    <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Name:</h3>
+            <h4>{{settings.first_name}} {{settings.last_name}}</h4>
+        </div>
+    </div>
+        <p>First Name:{{form.first_name}}</p>
+        <p>Last Name:{{form.last_name}}</p>
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Current Email (Optional):</h3>
+            <h4>{{settings.email}}</h4>
+        </div>
+    </div>
+        {{ form.email }}
+        <p>Receive email notifications for future Olympics? {{ form.notifications }} yes</p>
+		<button type="submit" class="save btn btn-default">Save</button>
+    </form>        
+<!---<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+        <h3>Current Picture:</h3>
+            <img class="img-responsive" src="/media/{{user.extended_user.avatar}}">
+        </div>
+    </div>
+</div>
+        <h3>Change your picture:</h3>
+        <p>{{ form.avatar }}</p>
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+</div>--->
+</div>
+        <h3>Change your password:</h3>
+        <a href="/change-password/">Change your password</a>
+</div>
+{% endblock %}

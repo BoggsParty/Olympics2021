@@ -1,0 +1,44 @@
+{% extends 'pages/header-footer.html' %}
+
+{% block content %}
+
+    {% if form.errors %}
+
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p>Your account doesn't have access to this page. To proceed,
+            please login with an account that has access.</p>
+        {% else %}
+            <h1 align="center">Please login to see this page</h1>
+        {% endif %}
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+        <div align="center">
+            <table id="tablelogin" align="center">
+                <tr>
+                    <td align="center">{{ form.username.label_tag }}</td>
+                    <td align="center">{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td align="center">{{ form.password.label_tag }}</td>
+                    <td align="center">{{ form.password }}</td>
+                </tr>
+            </table>
+
+            <h2><input type="submit" value="login" /></h2>
+            <input type="hidden" name="next" value="{{ next }}" />
+        </div>
+    </form>
+
+    <div align="center">
+        <br><a id="link3" href="/create-account/">Create an Account</a></br>
+
+        <br><a id="link3" href="/password-reset/">Forgot username or password?</a></br>
+    </div>
+{% endblock %}
+
