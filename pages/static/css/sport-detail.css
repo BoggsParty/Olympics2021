@@ -1,0 +1,28 @@
+/*.header {
+    border-bottom: 5px solid #7c9eb2;
+}*/
+
+a {
+  color: blue;
+  font-size: 125%;
+}
+
+h1 {
+    font-size: 300%;
+    color: red;
+}
+
+h2 {
+    font-size: 250%;
+	color: hotpink;
+}
+
+h3 {
+    font-size: 200%;
+    color: green;
+}
+
+p {
+    font-size: 125%;
+    color: #667375;
+}
