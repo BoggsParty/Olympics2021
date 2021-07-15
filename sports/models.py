@@ -1,6 +1,7 @@
 from django.db import models
 
 class Sport(models.Model):
+    order = models.IntegerField(default=100)
     active = models.BooleanField(default=False)
     sport_name = models.CharField(max_length=200, default='')
     slug = models.SlugField(max_length=50, default='')

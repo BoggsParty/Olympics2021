@@ -1,11 +1,14 @@
 /*{
     border: 1px solid red !important;
 }*/
+
 /* Colors:
-Gray: #fcfcfc
-Light blue: #e7f4f8
-Middle blue: #c8dfe6
-Dark blue: #485c63
+    Dark Blue: #1f5673; 31,86,115
+    Light Blue: #7c9eb2; 124,158,178
+    Red: #984447; 152,68,71
+    Green: #436436; 67,100,54
+    Yellow: #fcffcc; 252,255,204 OR eef670
+    Gray: #667375; 41,49,50
 */
     
 *{
@@ -16,12 +19,12 @@ Dark blue: #485c63
 }
 
 a {
-    color: #054458;
-    font-size: 200%;
+    color: #436436;
+    font-size: 150%;
 }
 
 a.menu {
-    color: #054458;
+    color: #436436;
     font-size: 100%;
 }
 /*.btn {
@@ -45,7 +48,7 @@ body {
 
 h1 {
     font-size: 300%;
-    color: #054458;
+    color: #984447;
 }
 h2 {
     font-size: 200%;
@@ -59,17 +62,7 @@ h4 {
     font-size: 200%;
     color: #984447;
 }
-h3.black {
-    font-size: 200%;
-    color: black;
-}
-h3.gray {
-    font-size: 200%;
-    color: #667375;
-}
-h4.white {
-    color: white;
-}
+
 
 .responsive {
   max-width: 70%;
@@ -107,17 +100,9 @@ IMG.center {
     margin-left: auto;
     margin-right: auto }
 
-
-
-
-
-
-
-
-
 /* Start of Menu CSS */
 .topnav {
-  background-color: #e7f4f8;
+  background-color: #1f5673;
   overflow: hidden;
 }
 
@@ -125,18 +110,18 @@ IMG.center {
 .topnav a {
   float: left;
   display: block;
-  color: #485c63;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-  background-color: #e7f4f8;
+  background-color: #1f5673;
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #c8dfe6;
-  color: #485c63;
+  background-color: #7c9eb2;
+  color: white;
 }
 
 /* Add an active class to highlight the current page */

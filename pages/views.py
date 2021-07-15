@@ -26,7 +26,8 @@ def sport_menu(request):
     now = today.date()
     lock_sports = Sport.objects.exclude(locked=True).filter(lock_date__lte=now)
     lock_sports.update(locked=True)
-    sport = get_list_or_404(Sport, active=True)
+    sport = Sport.objects.exclude(active=False).order_by('order')
+    #sport = get_list_or_404(Sport, active=True).order_by('order')
     return render(request, 'pages/menu.html',{'sport':sport,})
 
 @login_required(login_url='/accounts/login/')
