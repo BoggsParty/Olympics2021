@@ -60,9 +60,11 @@
             </div>
             <div class="col-sm-6">
                 <h2>Your Guesses</h2>
+				{% for guesses in guesses %}
                 <h3>Gold winner: {{guesses.gold}}</h3>
                 <h3>Silver winner: {{guesses.silver}}</h3>
                 <h3>Bronze winner: {{guesses.bronze}}</h3>
+				{% endfor %}
                 <a href="/user/guesses/all/{{sport.slug}}/">View all guesses</a>
             </div>
         </div>
@@ -70,9 +72,11 @@
         <div class="row">
             <div class="col-sm-6">
                 <h2>Your Guesses</h2>
+				{% for guesses in guesses %}
                 <h3>Gold winner: {{guesses.gold}}</h3>
                 <h3>Silver winner: {{guesses.silver}}</h3>
                 <h3>Bronze winner: {{guesses.bronze}}</h3>
+				{% endfor %}
                 <a href="#" onclick="window.open('/user/guess/{{sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to change your guesses</a>
             </div>
         </div>

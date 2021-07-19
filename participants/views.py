@@ -62,7 +62,7 @@ def all_guess_one_user(request):
     lock_sports = Sport.objects.exclude(locked=True).filter(lock_date__lte=now)
     lock_sports.update(locked=True)
     guesses = Guesses.objects.filter(user=request.user)
-    sport = Sport.objects.all()
+    sport = Sport.objects.exclude(active=False).order_by('order')
     return render (request, 'participants/guess-all.html', {'guesses':guesses, 'sport':sport})
 
 @login_required(login_url='/accounts/login/')   
