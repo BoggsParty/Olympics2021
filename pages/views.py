@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404, HttpResponseRedirect, render_to_response
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 from django.contrib.auth import logout
 from django.template import RequestContext
 from django.contrib.auth.models import User
@@ -73,3 +75,4 @@ def edit_settings_saved(request):
 def log_out (request):
     logout(request)
     return redirect('scores')
+    

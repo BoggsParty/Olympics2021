@@ -1,4 +1,5 @@
 from django.conf.urls import include, url
+from django.conf.urls import handler404, handler500
 from . import views
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
