@@ -20,6 +20,7 @@ class SportResource(resources.ModelResource):
 class sport_admin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display  = ('sport_name', 'lock_date',)
     prepopulated_fields = {"slug": ("sport_name",)}
+    autocomplete_fields = ['gold', 'silver', 'bronze']
 
 admin.site.register(Sport,sport_admin,)
 
@@ -28,6 +29,7 @@ class AthleteResource(resources.ModelResource):
         model = Athlete
 
 class athlete_admin(ImportExportModelAdmin, admin.ModelAdmin):
+    search_fields = ["athlete_name"]
     list_display = ('athlete_name','country',)
 
 admin.site.register(Athlete,athlete_admin)
