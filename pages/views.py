@@ -73,10 +73,12 @@ def score_calculation(request):
         total_score = Guesses.objects.filter(user=user).aggregate(Sum('score'))
         extended_user = Extended_User.objects.get(user=user)
         score_number = total_score['score__sum']
-        if score > 0:
-            print(total_score)
+        if score_number != None:
+            extended_user.score = score_number
+            #print(user, score_number)
             extended_user.save()
         else:
+            #print(user,'0')
             continue
     
     return render(request, 'pages/score-calculation.html')
