@@ -9,6 +9,9 @@
     Green: #436436; 67,100,54
     Yellow: #fcffcc; 252,255,204 OR eef670
     Gray: #667375; 41,49,50
+	Gold: #FFD700
+	Silver: #C0C0C0
+	Bronze: #cd7f32
 */
     
 *{
@@ -58,6 +61,27 @@ h3 {
     font-size: 200%;
     color: #984447;
 }
+
+h3.black {
+    font-size: 200%;
+    color: black;
+}
+
+h3.gold {
+    font-size: 200%;
+    color: #FFD700;
+}
+
+h3.silver {
+    font-size: 200%;
+    color: #C0C0C0;
+}
+
+h3.bronze {
+    font-size: 200%;
+    color: #cd7f32;
+}
+
 h4 {
     font-size: 200%;
     color: #984447;
@@ -98,7 +122,12 @@ p.subscript {
 IMG.center {
     display: block;
     margin-left: auto;
-    margin-right: auto }
+    margin-right: auto; 
+}
+	
+.opacity {
+	opacity: 0.3;
+}
 
 /* Start of Menu CSS */
 .topnav {

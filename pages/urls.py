@@ -18,5 +18,6 @@ url('^create-account/', CreateView.as_view(
         success_url='/user/settings/'
     )),
 url(r'^logout/$', views.log_out, name='log-out'),
+url(r'^calc_scores/$', views.score_calculation, name='score_calculation'),
 url(r'^$', views.scores, name='scores'),
 ]

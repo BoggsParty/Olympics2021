@@ -4,7 +4,7 @@ from import_export import resources
 from .models import Guesses
 
 class Guesses_admin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('user','sport','date',)
+    list_display = ('user','sport','date','score')
     order = ('date')
     filter_by = ('sport','user')
 

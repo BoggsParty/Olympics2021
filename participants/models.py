@@ -8,6 +8,7 @@ class Guesses(models.Model):
     gold = models.ForeignKey('sports.Athlete', on_delete=models.CASCADE, blank=True, null=True, related_name = 'gold+')
     silver = models.ForeignKey('sports.Athlete', on_delete=models.CASCADE, blank=True, null=True, related_name = 'silver+')
     bronze = models.ForeignKey('sports.Athlete', on_delete=models.CASCADE, blank=True, null=True, related_name = 'bronze+')
+    score = models.IntegerField(default=0)
     class Meta:
         verbose_name = "Guess"
         verbose_name_plural = "Guesses"
