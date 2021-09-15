@@ -23,7 +23,9 @@ def scores(request):
     return render(request, 'pages/scores.html',{'score':score})
     
 @login_required(login_url='/accounts/login/')
-def score_calculation(request):   
+def score_calculation(request):  
+    today = datetime.datetime.now()
+    now = today.date() 
     lock_sports = Sport.objects.exclude(active=False).exclude(locked=True).filter(lock_date__lte=now)
     lock_sports.update(locked=True)
     
