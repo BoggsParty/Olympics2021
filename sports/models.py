@@ -8,6 +8,7 @@ class Sport(models.Model):
     lock_date = models.DateField(auto_now=False, auto_now_add=False)
     award_date = models.DateField(auto_now=False, auto_now_add=False)
     locked = models.BooleanField(default=False)
+    awarded = models.BooleanField(default=False)
     
     sport_description = models.TextField(default='Sport Description')
     scoring = models.TextField(default='score')
@@ -24,7 +25,6 @@ class Sport(models.Model):
     )
     winner_type = models.CharField(max_length=2, choices=WINNER_TYPE, default=TEAM)
     
-    awarded = models.BooleanField(default=False)
     gold = models.ForeignKey('sports.Athlete', on_delete=models.CASCADE, blank=True, null=True, related_name = 'gold+')
     silver = models.ForeignKey('sports.Athlete', on_delete=models.CASCADE, blank=True, null=True, related_name = 'silver+')
     bronze = models.ForeignKey('sports.Athlete', on_delete=models.CASCADE, blank=True, null=True, related_name = 'bronze+')

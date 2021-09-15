@@ -24,7 +24,10 @@ def scores(request):
     
 @login_required(login_url='/accounts/login/')
 def score_calculation(request):   
-    active_sport = Sport.objects.all()
+    lock_sports = Sport.objects.exclude(active=False).exclude(locked=True).filter(lock_date__lte=now)
+    lock_sports.update(locked=True)
+    
+    active_sport = Sport.objects.filter(awarded=True, active=True)
     
     for sport in active_sport:
         active_user = User.objects.all()
@@ -88,11 +91,19 @@ def sport_menu(request):
     guess_entered = Guesses.objects.filter(user=request.user)
     today = datetime.datetime.now()
     now = today.date()
-    lock_sports = Sport.objects.exclude(locked=True).filter(lock_date__lte=now)
+    lock_sports = Sport.objects.exclude(active=False).exclude(locked=True).filter(lock_date__lte=now)
     lock_sports.update(locked=True)
     open_sport = Sport.objects.exclude(active=False).exclude(locked=True).order_by('lock_date')
     closed_sport = Sport.objects.exclude(active=False).exclude(locked=False).order_by('lock_date')
-    return render(request, 'pages/menu.html',{'guess_entered':guess_entered,'open_sport':open_sport,'closed_sport':closed_sport})
+    
+    no_guesses = False
+    
+    try:
+       check_guesses = Guesses.objects.get(user=request.user)
+    except:
+        no_guesses = True
+    
+    return render(request, 'pages/menu.html',{'guess_entered':guess_entered,'open_sport':open_sport,'closed_sport':closed_sport, 'no_guesses':no_guesses})
 
 @login_required(login_url='/accounts/login/')
 def sport_detail(request, sport):
@@ -104,7 +115,7 @@ def sport_detail(request, sport):
     images = get_list_or_404(Sport_Images, sport=sport)
     guesses = Guesses.objects.filter(user=request.user).filter(sport=sport)
     
-    return render(request, 'pages/sport_detail.html',{'sport':sport, 'images':images,'guesses':guesses})
+    return render(request, 'pages/sport_detail.html',{'sport':sport, 'images':images, 'guesses':guesses})
 
 @login_required(login_url='/accounts/login/')
 def edit_settings(request):

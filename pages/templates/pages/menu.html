@@ -12,15 +12,20 @@
         {% for open_sport in open_sport %}
         <div class="col-sm-3">
 			<a href="/sports/detail/{{open_sport.slug}}"><img class="img-responsive center" src="/media/{{open_sport.menu_image}}"></a>
-			{% for guess_entered in guess_entered %}
-				{% if guess_entered.sport.pk is open_sport.pk %}
-					<h4>&#9989 {{open_sport.sport_name}}</h4>
-					<a class="menu" href="#" onclick="window.open('/user/guess/{{open_sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to change your guesses</a>
-				{% else %}
-					<h4>&#10071 {{open_sport.sport_name}}</h4>
-					<a class="menu" href="#" onclick="window.open('/user/guess/{{open_sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to add your guesses</a>
-				{% endif %}
-			{% endfor %}           
+			{% if no_guesses %}
+				<h4>&#10071 {{open_sport.sport_name}}</h4>
+				<a class="menu" href="#" onclick="window.open('/user/guess/{{open_sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to add your guesses</a>
+			{% else %}
+				{% for guess_entered in guess_entered %}
+					{% if guess_entered.sport.pk is open_sport.pk %}
+						<h4>&#9989 {{open_sport.sport_name}}</h4>
+						<a class="menu" href="#" onclick="window.open('/user/guess/{{open_sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to change your guesses</a>
+					{% else %}
+						<h4>&#10071 {{open_sport.sport_name}}</h4>
+						<a class="menu" href="#" onclick="window.open('/user/guess/{{open_sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to add your guesses</a>
+					{% endif %}
+				{% endfor %}	
+			{% endif %}           
 			<p>Locks on {{open_sport.lock_date}}</p>
 		</div>
         {% endfor %}
