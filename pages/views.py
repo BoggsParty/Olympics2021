@@ -98,12 +98,12 @@ def sport_menu(request):
     open_sport = Sport.objects.exclude(active=False).exclude(locked=True).order_by('lock_date')
     closed_sport = Sport.objects.exclude(active=False).exclude(locked=False).order_by('lock_date')
     
-    no_guesses = False
+    check_guesses = Guesses.objects.filter(user=request.user).count()
     
-    try:
-       check_guesses = Guesses.objects.get(user=request.user)
-    except:
+    if check_guesses == 0:
         no_guesses = True
+    else:
+        no_guesses = False
     
     return render(request, 'pages/menu.html',{'guess_entered':guess_entered,'open_sport':open_sport,'closed_sport':closed_sport, 'no_guesses':no_guesses})
 

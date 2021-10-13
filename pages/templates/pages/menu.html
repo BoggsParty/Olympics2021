@@ -21,11 +21,20 @@
 						<h4>&#9989 {{open_sport.sport_name}}</h4>
 						<a class="menu" href="#" onclick="window.open('/user/guess/{{open_sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to change your guesses</a>
 					{% else %}
-						<h4>&#10071 {{open_sport.sport_name}}</h4>
-						<a class="menu" href="#" onclick="window.open('/user/guess/{{open_sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to add your guesses</a>
-					{% endif %}
+						{% if forloop.last %}
+							{% if guess_entered.sport.pk is open_sport.pk %}
+								<h4>&#9989 {{open_sport.sport_name}}</h4>
+								<a class="menu" href="#" onclick="window.open('/user/guess/{{open_sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to change your guesses</a>	
+							{% else %}
+								<h4>&#10071 {{open_sport.sport_name}}</h4>
+								<a class="menu" href="#" onclick="window.open('/user/guess/{{open_sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to add your guesses</a>	
+							{% endif %}
+						{% else %}
+
+						{% endif %}						
+					{% endif %}	
 				{% endfor %}	
-			{% endif %}           
+			{% endif %}     
 			<p>Locks on {{open_sport.lock_date}}</p>
 		</div>
         {% endfor %}
