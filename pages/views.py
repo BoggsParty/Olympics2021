@@ -9,9 +9,10 @@ from django.contrib.auth.models import User
 from registration.models import Extended_User
 from sports.models import Sport, Sport_Images
 from participants.models import Guesses
-from registration.forms import Edit_SettingsForm
+from registration.forms import Edit_SettingsForm, Edit_EmailForm
 from django.views.generic.edit import FormView
 import datetime
+
 
 @login_required(login_url='/accounts/login/')
 def FAQ(request):
@@ -87,6 +88,7 @@ def score_calculation(request):
             continue
     
     return render(request, 'pages/score-calculation.html')
+    
 
 @login_required(login_url='/accounts/login/')
 def sport_menu(request):
@@ -118,7 +120,20 @@ def sport_detail(request, sport):
     guesses = Guesses.objects.filter(user=request.user).filter(sport=sport)
     
     return render(request, 'pages/sport_detail.html',{'sport':sport, 'images':images, 'guesses':guesses})
-
+    
+@login_required(login_url='/accounts/login/')
+def update_email(request):
+    settings = get_object_or_404(Extended_User, user=request.user)
+    if request.method == "POST":
+        form = Edit_EmailForm(request.POST,request.FILES, instance=settings)
+        if form.is_valid():
+            settings = form.save(commit=False)
+            settings.save()
+            return redirect('edit-settings-saved')
+    else:
+        form = Edit_SettingsForm(instance=settings)
+    return render(request, 'registration/email_change_form.html', {'form':form,'settings':settings})
+    
 @login_required(login_url='/accounts/login/')
 def edit_settings(request):
     #sports_nav = get_list_or_404(Sport)
@@ -131,7 +146,7 @@ def edit_settings(request):
             return redirect('edit-settings-saved')
     else:
         form = Edit_SettingsForm(instance=settings)
-    return render(request, 'registration/settings.html', {'form':form,'settings':settings})
+    return render(request, 'registration/settings.html', {'form':form,'settings':settings,})
  
 @login_required(login_url='/accounts/login/') 
 def edit_settings_saved(request):
@@ -146,7 +161,7 @@ def edit_settings_saved(request):
     else:
         form = Edit_SettingsForm(instance=settings)
     return render(request, 'registration/settings-saved.html', {'form':form,'settings':settings})
-    
+
 def log_out (request):
     logout(request)
     return redirect('scores')

@@ -13,6 +13,7 @@
         <div class="col-sm-12">
             <p>If you do not provide a real name or a valid email address, you may not receive your prize!<p>
             <p>Your email address can be used to help recover your account.</p>
+			<p>Email olympics@juliakuzel.com to change your username.</p>
         </div>
     </div>
 </div>
@@ -28,12 +29,10 @@
         <p>Last Name:{{form.last_name}}</p>
     <div class="row">
         <div class="col-sm-12">
-            <h3>Current Email (Optional):</h3>
+            <h3>Current Email:</h3>
             <h4>{{settings.email}}</h4>
         </div>
     </div>
-        {{ form.email }}
-        <p>Receive email notifications for future Olympics? {{ form.notifications }} yes</p>
 		<button type="submit" class="save btn btn-default">Save</button>
     </form>        
 <!---<div class="container-fluid">

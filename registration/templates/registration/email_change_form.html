@@ -1,0 +1,26 @@
+{% extends 'pages/header-footer.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row center">
+        <div class="col-sm-12">
+            <h1>Email</h1>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row center">
+        <div class="col-sm-12">
+            <p>A valid email address, you may not receive your prize!<p>
+            <p>Your email address can be used to help recover your account.</p>
+			<p>Email olympics@juliakuzel.com to change your username.</p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
+        {{ form.email }}
+		<button type="submit" class="save btn btn-default">Save</button>
+    </form>
+</div>	
+{% endblock %}

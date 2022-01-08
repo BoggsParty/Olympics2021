@@ -26,16 +26,19 @@
     </div>
         <p>First Name:{{form.first_name}}</p>
         <p>Last Name:{{form.last_name}}</p>
+	<button type="submit" class="save btn btn-default">Save</button>
+	</form> 
     <div class="row">
         <div class="col-sm-12">
-            <h3>Current Email (Optional):</h3>
+            <h3>Current Email:</h3>
             <h4>{{settings.email}}</h4>
         </div>
     </div>
-        {{ form.email }}
-        <p>Receive email notifications for future Olympics? {{ form.notifications }} yes</p>
-		<button type="submit" class="save btn btn-default">Save</button>
-    </form>        
+		<h3>Change your email:</h3>
+		<a href="/user/email">Change your password</a>
+        <h3>Change your password:</h3>
+        <a href="/change-password/">Change your password</a>
+</div>       
 <!---<div class="container-fluid">
     <div class="row">
         <div class="col-sm-6">
@@ -49,8 +52,5 @@
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
 </div>--->
-</div>
-        <h3>Change your password:</h3>
-        <a href="/change-password/">Change your password</a>
-</div>
+
 {% endblock %}
