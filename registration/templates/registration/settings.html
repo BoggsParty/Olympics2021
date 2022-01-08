@@ -9,15 +9,6 @@
     </div>
 </div>
 <div class="container-fluid">
-    <div class="row center">
-        <div class="col-sm-12">
-            <p>If you do not provide a real name or a valid email address, you may not receive your prize!<p>
-            <p>Your email address can be used to help recover your account.</p>
-			<p>Email olympics@juliakuzel.com to change your username.</p>
-        </div>
-    </div>
-</div>
-<div class="container-fluid">
     <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
     <div class="row">
         <div class="col-sm-12">
@@ -27,14 +18,19 @@
     </div>
         <p>First Name:{{form.first_name}}</p>
         <p>Last Name:{{form.last_name}}</p>
+	<button type="submit" class="save btn btn-default">Save</button>
+	</form> 
     <div class="row">
         <div class="col-sm-12">
             <h3>Current Email:</h3>
             <h4>{{settings.email}}</h4>
         </div>
     </div>
-		<button type="submit" class="save btn btn-default">Save</button>
-    </form>        
+		<h3>Change your email:</h3>
+		<a href="/user/email">Change your password</a>
+        <h3>Change your password:</h3>
+        <a href="/change-password/">Change your password</a>
+</div>       
 <!---<div class="container-fluid">
     <div class="row">
         <div class="col-sm-6">
@@ -48,8 +44,5 @@
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
 </div>--->
-</div>
-        <h3>Change your password:</h3>
-        <a href="/change-password/">Change your password</a>
-</div>
+
 {% endblock %}
