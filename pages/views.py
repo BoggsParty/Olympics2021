@@ -123,7 +123,7 @@ def sport_detail(request, sport):
     
 @login_required(login_url='/accounts/login/')
 def update_email(request):
-    settings = get_object_or_404(Extended_User, user=request.user)
+    settings = request.user
     if request.method == "POST":
         form = Edit_EmailForm(request.POST,request.FILES, instance=settings)
         if form.is_valid():
@@ -131,12 +131,13 @@ def update_email(request):
             settings.save()
             return redirect('edit-settings-saved')
     else:
-        form = Edit_SettingsForm(instance=settings)
+        form = Edit_EmailForm(instance=settings)
     return render(request, 'registration/email_change_form.html', {'form':form,'settings':settings})
     
 @login_required(login_url='/accounts/login/')
 def edit_settings(request):
     #sports_nav = get_list_or_404(Sport)
+    email = request.user
     settings = get_object_or_404(Extended_User, user=request.user)
     if request.method == "POST":
         form = Edit_SettingsForm(request.POST,request.FILES, instance=settings)
@@ -146,11 +147,12 @@ def edit_settings(request):
             return redirect('edit-settings-saved')
     else:
         form = Edit_SettingsForm(instance=settings)
-    return render(request, 'registration/settings.html', {'form':form,'settings':settings,})
+    return render(request, 'registration/settings.html', {'form':form,'settings':settings,'email':email,})
  
 @login_required(login_url='/accounts/login/') 
 def edit_settings_saved(request):
     #sports_nav = get_list_or_404(Sport)
+    email = request.user
     settings = get_object_or_404(Extended_User, user=request.user)
     if request.method == "POST":
         form = Edit_SettingsForm(request.POST,request.FILES, instance=settings)
@@ -160,7 +162,7 @@ def edit_settings_saved(request):
             return redirect('edit-settings-saved')
     else:
         form = Edit_SettingsForm(instance=settings)
-    return render(request, 'registration/settings-saved.html', {'form':form,'settings':settings})
+    return render(request, 'registration/settings-saved.html', {'form':form,'settings':settings,'email':email,})
 
 def log_out (request):
     logout(request)

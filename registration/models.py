@@ -11,7 +11,7 @@ class Extended_User(models.Model):
     avatar = models.ImageField(upload_to='avatars', blank=True)
     score = models.IntegerField(default='0')
     forbidden = models.BooleanField(default=False)
-    email = models.EmailField(default='', blank=True)
+    #email = models.EmailField(default='', blank=True)
     notifications = models.BooleanField(default=False)
     
     #def __str__(self):
