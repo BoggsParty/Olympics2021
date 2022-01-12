@@ -9,16 +9,20 @@
         </div>
     </div>
     <div class="row center">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-3">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
             <h2>Gold</h2>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <h2>Silver</h2>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <h2>Bronze</h2>
         </div>
+		<div class="col-sm-2">
+			<h2>Points</h2>
+		</div>
     </div>
 </div>
 <div class="container-fluid">
@@ -35,15 +39,24 @@
             <a href="#" onclick="window.open('/user/guess/{{guesses.sport.slug}}', 'newwindow', 'width=400, height=300'); return false;">Change Your Guesses</a>
             {% endif %}
         </div>
-        <div class="col-sm-3">
-            <h3 class="gray">{{guesses.gold}}</h3>
+        <div class="col-sm-2">
+            <h3 class="gold">{{guesses.gold}}</h3>
         </div>
-        <div class="col-sm-3">
-            <h3 class="gray">{{guesses.silver}}</h3>
+        <div class="col-sm-2">
+            <h3 class="silver">{{guesses.silver}}</h3>
         </div>
-        <div class="col-sm-3">
-            <h3 class="gray">{{guesses.bronze}}</h3>
+        <div class="col-sm-2">
+            <h3 class="bronze">{{guesses.bronze}}</h3>
         </div>
+		{% if guesses.sport.locked %}
+		<div class="col-sm-2">
+			<h3 class="black">{{guesses.score}}</h3>
+		</div>
+		{% else %}
+		<div class="col-sm-2">
+			<h3 class="black">TBD</h3>
+		</div>
+		{% endif %}
     </div>
     <br>
     {% endfor %}

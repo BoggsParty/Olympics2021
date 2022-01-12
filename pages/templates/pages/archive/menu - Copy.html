@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'pages/header-footer.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row center">
+        <h1>All Sports</h1>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row center display-flex">
+        {% for open_sport in open_sport %}
+        <div class="col-sm-3">
+			<a href="/sports/detail/{{open_sport.slug}}"><img class="img-responsive center" src="/media/{{open_sport.menu_image}}"></a>
+			{% if no_guesses %}
+				<h4>&#10071 {{open_sport.sport_name}}</h4>
+				<a class="menu" href="#" onclick="window.open('/user/guess/{{open_sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to add your guesses</a>
+			{% else %}
+				{% for guess_entered in guess_entered %}
+					{% if guess_entered.sport.pk is open_sport.pk %}
+						<h4>&#9989 {{open_sport.sport_name}}</h4>
+						<a class="menu" href="#" onclick="window.open('/user/guess/{{open_sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to change your guesses</a>
+					{% elif guess_entered.sport.pk is not open_sport.pk %}
+						<h4>{{open_sport.sport_name}}</h4>
+						<a class="menu" href="#" onclick="window.open('/user/guess/{{open_sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to change your guesses</a>
+						<!--{% if forloop.last %}
+							{% if guess_entered.sport.pk is open_sport.pk %}
+								<h4>&#9989 {{open_sport.sport_name}}</h4>
+								<a class="menu" href="#" onclick="window.open('/user/guess/{{open_sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to change your guesses</a>	
+							{% else %}
+								<h4>&#10071 {{open_sport.sport_name}}</h4>
+								<a class="menu" href="#" onclick="window.open('/user/guess/{{open_sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to add your guesses</a>	
+							{% endif %}					
+						{% endif %}	-->
+					{% else %}
+					{% endif %}	
+				{% endfor %}	
+			{% endif %}     
+			<p>Locks on {{open_sport.lock_date}}</p>
+		</div>
+        {% endfor %}
+		{% for closed_sport in closed_sport %}
+        <div class="col-sm-3">
+			<a href="/sports/detail/{{closed_sport.slug}}"><img style="opacity:0.3" class="img-responsive center locked" src="/media/{{closed_sport.menu_image}}"></a>
+			<h4>{{closed_sport.sport_name}}</h4>
+            <a class="menu" href="/user/guesses/all/{{closed_sport.slug}}">Click here to view all user's guesses</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

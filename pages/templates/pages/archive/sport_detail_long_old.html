@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% extends 'pages/header-footer.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row center">
+        <h1>{{sport.sport_name}}</h1>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row center">
+        <h3>Get your guesses in before {{sport.lock_date}}!</h3>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+			<h2 class="header">How does this sport work?</h2>
+            <p>{{sport.sport_description | safe}}</p>
+			<h2 class="header">How do they choose the winner?</h2>
+            <p>{{sport.scoring | safe}}</p>
+			<h2 class="header">Who is going to win?</h2>
+            <p>{{sport.favorite | safe}}</p>
+            <p>Click <a href="{{sport.rankings_url}}">here</a> to view the official rankings.</p>
+			<h2 class="header">When to Watch</h2>
+            <p>{{sport.competition_dates | safe}}</p>
+        </div>
+        <div class="col-sm-6">
+            {% for images in images %}
+                <img class="img-responsive" src="/media/{{images.image}}" alt="{{images.alt}}">
+                <p class="subscript">Provided under creative commons license by <a href="{{images.image_source}}" class="subscript">{{images.image_attribute}}</a>.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    {% if sport.locked %}
+        <div class="row">
+            <div class="col-sm-6">
+                    <h2>Winners</h2>
+                    <h3>Gold winner: {{sport.gold}}</h3>
+                    <h3>Silver winner: {{sport.silver}}</h3>
+                    <h3>Bronze winner: {{sport.bronze}}</h3>
+            </div>
+            <div class="col-sm-6">
+                <h2>Your Guesses</h2>
+				{% for guesses in guesses %}
+                <h3>Gold winner: {{guesses.gold}}</h3>
+                <h3>Silver winner: {{guesses.silver}}</h3>
+                <h3>Bronze winner: {{guesses.bronze}}</h3>
+				{% endfor %}
+                <a href="/user/guesses/all/{{sport.slug}}/">View all guesses</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Your Guesses</h2>
+				{% for guesses in guesses %}
+                <h3>Gold winner: {{guesses.gold}}</h3>
+                <h3>Silver winner: {{guesses.silver}}</h3>
+                <h3>Bronze winner: {{guesses.bronze}}</h3>
+				{% endfor %}
+                <a href="#" onclick="window.open('/user/guess/{{sport.slug}}', 'newwindow', 'width=300, height=400'); return false;">Click here to change your guesses</a>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
