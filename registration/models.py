@@ -8,6 +8,7 @@ class Extended_User(models.Model):
     user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
     first_name = models.CharField(default='', max_length=200)
     last_name = models.CharField(default='', max_length=200)
+    use_full_name = models.BooleanField(default=False)
     avatar = models.ImageField(upload_to='avatars', blank=True)
     score = models.IntegerField(default='0')
     forbidden = models.BooleanField(default=False)

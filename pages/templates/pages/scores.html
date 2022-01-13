@@ -18,7 +18,11 @@
 					{% for score in score %}
 						<tr id="tr1">
 							<!--<td id="td1"><img class="img-responsive" src="/media/{{score.avatar}}"></td>-->
+							{% if score.use_full_name %}
+							<td id="td1"><p>{{score.first_name}} {{score.last_name}}</p></td>
+							{% else %}
 							<td id="td1"><p>{{ score.user }}</p></td>
+							{% endif %}
 							<td id="td1"><p>{{ score.score}}</p></td>
 					</tr>
 					{% endfor %}

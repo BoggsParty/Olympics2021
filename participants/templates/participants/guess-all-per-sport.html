@@ -43,7 +43,11 @@
     {% for guesses in guesses %}
     <div class="row center">
         <div class="col-sm-2">
+			{% if guesses.user.extended_user.use_full_name %}
+			<h3 class="black">{{guesses.user.extended_user.first_name}} {{guesses.user.extended_user.last_name}}</h3>
+			{% else %}
             <h3 class="black">{{guesses.user}}</h3>
+			{% endif %}
         </div>
         <div class="col-sm-2">
             <h3 class="gold">{{guesses.gold}}</h3>
