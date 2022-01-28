@@ -97,8 +97,8 @@ def sport_menu(request):
     now = today.date()
     lock_sports = Sport.objects.exclude(active=False).exclude(locked=True).filter(lock_date__lte=now)
     lock_sports.update(locked=True)
-    open_sport= Sport.objects.exclude(active=False).exclude(locked=True).order_by('order')
-    closed_sport = Sport.objects.exclude(active=False).exclude(locked=False).order_by('order')
+    open_sport= Sport.objects.exclude(active=False).exclude(locked=True).order_by('lock_date')
+    closed_sport = Sport.objects.exclude(active=False).exclude(locked=False).order_by('lock_date')
     
     check_guesses = Guesses.objects.filter(user=request.user).count()
     
