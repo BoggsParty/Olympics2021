@@ -4,13 +4,14 @@
 
 <div class="spacer"></div>
 <div class="container-fluid">
-	<div align="center">
+	<div align="left">
 		<div class="row">
-			<div class="col-sm-12">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
 				<form method="post" action="">
 					{% csrf_token %}
 					{{ form.as_ul}}
-				<h2><input type="submit" value="Create new user account" /></h2>
+				<p><input type="submit" value="Create new user account" /></p>
 				</form>
 			</div>
 		</div>
