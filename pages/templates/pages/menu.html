@@ -4,13 +4,13 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row center">
-        <h1>All Sports</h1>
+        <h3>All Sports</h3>
 		<h2>Sports lock at 12:01 AM CST on the day listed.</h2>
-		<h3>Icons courtesy of MK</h3>
+		<p>Icons courtesy of MK</p>
     </div>
 </div>
 <div class="container-fluid">
-    <div class="row center display-flex">
+    <div class="row center">
         {% for open_sport in open_sport %}
         <div class="col-sm-3">
 			<a href="/sports/detail/{{open_sport.slug}}"><img class="img-responsive center" src="/media/{{open_sport.menu_image}}"></a>
