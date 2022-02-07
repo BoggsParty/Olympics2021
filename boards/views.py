@@ -13,7 +13,7 @@ def messages_first_page(request):
     messages = Comments.objects.all().order_by('-id')[:10]
     responses = Responses.objects.all()
     next_page = 1
-    return render (request, 'boards/messages.html',{'messages':messages,'responses':responses,'q_count':q_count,'next_page':next_page, 'extended_user':extended_user,})
+    return render (request, 'boards/messages.html',{'messages':messages,'responses':responses,'q_count':q_count,'next_page':next_page,'extended_user':extended_user,})
 
 @login_required
 def messages(request, num):
