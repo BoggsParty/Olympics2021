@@ -9,10 +9,11 @@ import datetime
 @login_required
 def messages_first_page(request):
     extended_user = Extended_User.objects.get(user=request.user)
+    q_count = Comments.objects.all().count()
     messages = Comments.objects.all().order_by('-id')[:10]
     responses = Responses.objects.all()
     next_page = 1
-    return render (request, 'boards/messages.html',{'messages':messages,'responses':responses,'next_page':next_page, 'extended_user':extended_user,})
+    return render (request, 'boards/messages.html',{'messages':messages,'responses':responses,'q_count':q_count,'next_page':next_page, 'extended_user':extended_user,})
 
 @login_required
 def messages(request, num):

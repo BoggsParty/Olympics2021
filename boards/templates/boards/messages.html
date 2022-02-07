@@ -21,7 +21,9 @@
 {% else %}
 <div class="container-fluid">
     <div class="row">
-        {% if next_page == 1 %}
+		{% if q_count < 11 %}
+
+        {% elif next_page == 1 %}
         <div class="col-sm-1 col-sm-offset-11">
             <a href='/user/message-board/{{next_page}}/'>&#8594;</a>
         </div>
@@ -135,7 +137,9 @@
 
 <div class="container-fluid">
     <div class="row">
-        {% if next_page == 1 %}
+		{% if q_count < 11 %}
+		
+        {% elif next_page == 1 %}
         <div class="col-sm-1 col-sm-offset-11">
             <a href='/user/message-board/{{next_page}}/'>&#8594;</a>
             <p class="message">Next</p>
@@ -143,7 +147,7 @@
         {% elif final_page < next_page %}
         <div class="col-sm-1">
             {% if previous_page == 0 %}
-                <a href="/user/message-board/">&#x21;</a>
+                <a href="/user/message-board/">&#8592;</a>
                 <p class="message">Previous</p>
             {% else %}
                 <a href="/user/message-board/{{previous_page}}/">&#8592;</a>
