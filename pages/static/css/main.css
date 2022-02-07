@@ -87,6 +87,21 @@ h4 {
     color: #984447;
 }
 
+h4.board {
+	font-size: 150%;
+	color: white;
+	background-color: #1f5673;
+}
+
+h4.board-reply {
+	font-size: 150%;
+	color: white;
+	background-color: #7c9eb2;
+}
+
+.board {
+	background-color: #1f5673;
+}
 
 .responsive {
   max-width: 70%;
