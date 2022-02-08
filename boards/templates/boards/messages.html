@@ -70,10 +70,10 @@
         </div>
     </div>
 </div>-->
-<div class="spacer"></div>
+	<div class="spacer"></div>
 	<div class="container-fluid">
+		{% for messages in messages %}
 		<div class="col-sm-12">
-			{% for messages in messages %}
 			<div class="row">
 				<!--<div class="col-sm-1">
 					<img class="img-responsive" src="/media/{{user.extended_user.avatar}}">
@@ -83,7 +83,7 @@
 				</div>
 			</div>	
 			<div class="row">
-				<div class="col-sm-7 col-sm-offset-2">
+				<div class="col-sm-8 col-sm-offset-2">
 					<p class="subscript">{{messages.date}}</p>
 				</div>
 				{% if messages.user == request.user %}
@@ -93,7 +93,7 @@
 				{% endif %}
 			</div>
 			<div class="row">
-				<div class="col-sm-7 col-sm-offset-2">
+				<div class="col-sm-8 col-sm-offset-2">
 					<p class="message">{{messages.message}}</p>
 				</div>
 			</div>  
@@ -102,7 +102,7 @@
 					<a href="/user/message-board/response/{{messages.pk}}/">Reply</a>
 				</div>
 			</div>
-			<div class="spacer"></div>
+
 			{% for responses in responses %}
 				{% if responses.comment.pk == messages.pk %}
 				<div class="row">
