@@ -79,7 +79,11 @@
 					<img class="img-responsive" src="/media/{{user.extended_user.avatar}}">
 				</div>-->
 				<div class="col-sm-8 col-sm-offset-2">
+					{% if messages.user.extended_user.use_full_name %}
+					<h4 class="board">{{messages.user.extended_user.first_name}} {{messages.user.extended_user.last_name}}</h4>
+					{% else %}
 					<h4 class="board">{{messages.user}}</h4>
+					{% endif %}
 				</div>
 			</div>	
 			<div class="row">
@@ -110,7 +114,11 @@
 						<img class="img-responsive" src="/media/{{user.extended_user.avatar}}">
 					</div>-->
 					<div class="col-sm-7 col-sm-offset-3">
+						{% if responses.user.extended_user.use_full_name %}
+						<h4 class="board-reply">{{responses.user.extended_user.first_name}} {{responses.user.extended_user.last_name}}</h4>
+						{% else %}
 						<h4 class="board-reply">{{responses.user}}</h4>
+						{% endif %}
 					</div>
 				</div>
 				<div class="row">
