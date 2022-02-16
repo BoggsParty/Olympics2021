@@ -18,7 +18,7 @@ class SportResource(resources.ModelResource):
         model = Sport
 
 class sport_admin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display  = ('sport_name', 'lock_date',)
+    list_display  = ('sport_name', 'lock_date', 'awarded')
     prepopulated_fields = {"slug": ("sport_name",)}
     autocomplete_fields = ['gold', 'silver', 'bronze']
 
